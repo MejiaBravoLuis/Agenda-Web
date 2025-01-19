@@ -1,0 +1,16 @@
+body{
+    background-image: url('https://i.pinimg.com/originals/75/3e/37/753e37e75bcac37823db08388bc8e5b6.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container{
+    color: white;
+}
+
+.imagen img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
