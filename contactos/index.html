@@ -55,16 +55,30 @@
           </li>
         </ol>
 
-        <button class="btn btn-primary mt-4 d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Ver más acciones</button>
+        <button class="btn btn-outline-light mt-4 d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Ver más acciones</button>
 
         <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasBottomLabel">Menú</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
+
           <div class="offcanvas-body small">
-            <a href="../login.html">Cerrar sesión</a>
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item" tabindex="-1">
+                <h4>
+                  <a class="nav-link active" aria-current="page" href="#">Agregar un nuevo contacto</a>
+                </h4>
+                <h4>
+                  <a class="nav-link active" aria-current="page" href="#">Perfil de usuario</a>
+                </h4>
+                <h4>
+                  <a class="nav-link active" aria-current="page" href="../login.html">Cerrar sesión</a>
+                </h4>
+              </li>
+            </ul>
           </div>
+
         </div>
       </div>
     </div>
