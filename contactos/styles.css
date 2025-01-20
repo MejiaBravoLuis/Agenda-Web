@@ -5,12 +5,3 @@ body{
     background-attachment: fixed;
 }
 
-.custom-offcanvas {
-    background-color: #000; /* Color negro */
-    color: #fff;           /* Cambia el texto a blanco para contraste */
-}
-
-.custom-offcanvas .btn-close {
-    filter: invert(1); /* Cambia el color del botón de cierre a blanco */
-}
-
