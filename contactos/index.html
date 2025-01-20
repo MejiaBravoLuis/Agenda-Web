@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Contactos</title>
-</head>
-    <body>
-        
-    </body>
+  </head>
+
+  <body>
+    <div class="text-center mt-4">
+      <img src="https://cdn-icons-png.flaticon.com/512/4239/4239021.png" alt="imagen de usuario" width="250px" height="250px">
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <ol class="list-group list-group-numbered container mt-5 d-flex justify-content-center">
+          <h1>Lista de contactos</h1>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Luis Mejia</div>
+              El informe de progreso del proyecto estará listo mañana por...
+            </div>
+            <span class="badge text-bg-primary rounded-pill">2</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">José Chaín</div>
+              Recordatorio: el sprint review está programado...
+            </div>
+            <span class="badge text-bg-primary rounded-pill">12</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Arturo Bernal</div>
+              ¿Puedes revisar el nuevo diseño del dashboard....
+            </div>
+            <span class="badge text-bg-primary rounded-pill">1</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Esteban Santana</div>
+              Estamos implementando la última versión del framework...
+            </div>
+            <span class="badge text-bg-primary rounded-pill">3</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">Emilio Aguilar</div>
+              El cliente solicitó cambios en la funcionalidad de inicio de sesión. ¿Los...
+            </div>
+            <span class="badge text-bg-primary rounded-pill">1</span>
+          </li>
+        </ol>
+
+        <button class="btn btn-primary mt-4 d-flex" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Ver más acciones</button>
+
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Menú</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body small">
+            <a href="../login.html">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </body>
 </html>
