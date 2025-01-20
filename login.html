@@ -15,21 +15,21 @@
     </div>
 
     <div class="container mt-5 d-flex justify-content-center">
-        <form class="md-4">
+        <form class="md-4" action="./contactos/index.html" method="GET">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-            <div id="emailHelp" class="form-text">Tu información no será compartida.</div>
-                <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="@gmail.com" name="email" aria-describedby="emailHelp" required>
             </div>
-                <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name="password" required>
+            </div>
+            <div id="emailHelp" class="form-text">Tu información no será compartida.</div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember">
                 <label class="form-check-label" for="exampleCheck1">Recuérdame</label>
             </div>
-            <a href="./contactos/index.html" class="btn btn-primary">Iniciar sesión</a>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </form>
     </div>
     
