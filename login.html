@@ -15,10 +15,10 @@
     </div>
 
     <div class="container mt-5 d-flex justify-content-center">
-        <form class="md-4" action="./contactos/index.html" method="GET">
+        <form class="md-4" id="loginForm" method="GET">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Dirección de correo electrónico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="@gmail.com" name="email" aria-describedby="emailHelp" required>
+                <label for="user" class="form-label">Dirección de correo electrónico</label>
+                <input type="text" class="form-control" id="user" aria-describedby="user" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
@@ -32,6 +32,29 @@
             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </form>
     </div>
+
+    <script>
+        // Capturar los datos del formulario al enviar
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
     
-</body>
+            // Capturar los valores de usuario y contraseña
+            const user = document.getElementById("user").value;
+            const password = document.getElementById("exampleInputPassword1").value;
+    
+            // Imprimir los datos en la consola
+            console.log("Datos capturados:");
+            console.log("Usuario:", user);
+            console.log("Contraseña:", password);
+    
+            // Guardar los datos en localStorage (opcional)
+            localStorage.setItem("user", user);
+            localStorage.setItem("password", password);
+    
+            // Redirigir a la página de contactos
+            window.location.href = "file:///C:/Users/Informatica/Desktop/repo/Agenda-Web/contactos/index.html";
+        });
+    </script>
+Ñ    
+  </body>
 </html>
