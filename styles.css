@@ -1,0 +1,16 @@
+body{
+    background-image: url('https://wallpapercave.com/wp/wp2682242.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container{
+    color: white;
+}
+
+.imagen img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
