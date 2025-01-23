@@ -3,9 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>toDoList</title>
 </head>
 <body>
-    
+    <div class="container mt-5 align-items-center">
+        <h1>To Do List</h1>
+        <form id="FormularioTarea">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">¿Que harás hoy?</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">¿En que consiste?</label>
+                <textarea class="form-control" id="descripcionTarea" placeholder="añade una breve descripción de la tarea" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="prioridadTarea" class="form-label">Prioridad</label>
+                <select class="form-select" id="prioridadTarea" required>
+                  <option value="Alta">Alta</option>
+                  <option value="Media">Media</option>
+                  <option value="Baja">Baja</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-outline-dark" onclick="agregarTarea()">Agregar Tarea</button>
+        </form>
+
+        <h3 class="mt-5">Aquí aparecerán tus actividades pendientes!</h3>
+        <div class="d-flex justify-content-between mb-3">
+          <button class="btn btn-danger" onclick="ordenarTareas('asc')">Ordenar Ascendemente</button>
+          <button class="btn btn-success" onclick="ordenarTareas('desc')">Ordenar Descendente</button>
+        </div>
+        <ul id="listaTareas" class="list-group">
+        </ul>
+    </div>
+
+    <div class="modal fade" id="editarTareaModal" tabindex="-1" aria-labelledby="editarTareaModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarTareaModalLabel">Editar Tarea</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="FormularioEditarTarea">
+            <div class="mb-3">
+              <label for="editarNombreTarea" class="form-label">Nombre de la Tarea</label>
+              <input type="text" class="form-control" id="editarNombreTarea" required>
+            </div>
+            <div class="mb-3">
+              <label for="editarDescripcionTarea" class="form-label">Descripción</label>
+              <textarea class="form-control" id="editarDescripcionTarea" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="editarPrioridadTarea" class="form-label">Prioridad</label>
+              <select class="form-select" id="editarPrioridadTarea" required>
+                <option value="Urgente">Urgente</option>
+                <option value="Media">Media</option>
+                <option value="Baja">Baja</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" onclick="guardarCambiosTarea()">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let tareas = [];
+
+    function agregarTarea() {
+      const nombre = document.getElementById('nombre').value;
+      const descripcion = document.getElementById('descripcionTarea').value;
+      const prioridad = document.getElementById('prioridadTarea').value;
+
+      if (nombre && descripcion && prioridad) {
+        tareas.push({ nombre, descripcion, prioridad });
+        renderTareas();
+      }
+    }
+
+    function renderTareas() {
+      const lista = document.getElementById('listaTareas');
+      lista.innerHTML = '';
+
+      tareas.forEach((tarea, index) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerHTML = `
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h5>${tarea.nombre} <span class="badge bg-${getBadgeClass(tarea.prioridad)}">${tarea.prioridad}</span></h5>
+              <p>${tarea.descripcion}</p>
+              <p class="text-success">Recién añadida</p>
+            </div>
+            <div>
+              <button class="btn btn-warning btn-sm me-2" onclick="editarTarea(${index})">Editar</button>
+              <button class="btn btn-danger btn-sm" onclick="eliminarTarea(${index})">Eliminar</button>
+            </div>
+          </div>
+        `;
+        lista.appendChild(li);
+      });
+    }
+
+    function editarTarea(index) {
+      const tarea = tareas[index];
+      document.getElementById('editarNombreTarea').value = tarea.nombre;
+      document.getElementById('editarDescripcionTarea').value = tarea.descripcion;
+      document.getElementById('editarPrioridadTarea').value = tarea.prioridad;
+
+      const guardarCambios = () => {
+        tarea.nombre = document.getElementById('editarNombreTarea').value;
+        tarea.descripcion = document.getElementById('editarDescripcionTarea').value;
+        tarea.prioridad = document.getElementById('editarPrioridadTarea').value;
+        renderTareas();
+        document.getElementById('editarTareaModal').classList.remove('show');
+      };
+
+      document.getElementById('guardarCambiosTarea').onclick = guardarCambios;
+      new bootstrap.Modal(document.getElementById('editarTareaModal')).show();
+    }
+
+    function eliminarTarea(index) {
+      tareas.splice(index, 1);
+      renderTareas();
+    }
+
+    function ordenarTareas(direccion) {
+      tareas.sort((a, b) => {
+        const prioridadOrden = { Alta: 1, Media: 2, Baja: 3 };
+        return direccion === 'asc' ? prioridadOrden[a.prioridad] - prioridadOrden[b.prioridad] : prioridadOrden[b.prioridad] - prioridadOrden[a.prioridad];
+      });
+      renderTareas();
+    }
+
+    function getBadgeClass(prioridad) {
+      switch (prioridad) {
+        case 'Alta':
+          return 'danger';
+        case 'Media':
+          return 'warning';
+        case 'Baja':
+          return 'success';
+        default:
+          return 'secondary';
+      }
+    }
+  </script>
 </body>
 </html>
