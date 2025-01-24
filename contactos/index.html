@@ -86,10 +86,31 @@
         <li class="nav-item" tabindex="-1">
           <h4><a class="nav-link active" aria-current="page" href="../nuevoContacto/nuevoContacto.html">Agregar un nuevo contacto</a></h4>
           <h4><a class="nav-link active" aria-current="page" href="../favoritos/favorito.html">Ver contactos favoritos</a></h4>
-          <h4><a class="nav-link active" aria-current="page" href="">Perfil de usuario</a></h4>
-          <h4><a class="nav-link active" aria-current="page" href="../login.html">Cerrar sesión</a></h4>
+          <h4><a class="nav-link active" href="#" data-bs-toggle="modal" data-bs-target="#profileModal" onclick="showUserProfile()">Ver perfil de usuario</a></h4>
+          <h4><a class="nav-link active" aria-current="page" href="../login.html" onclick="closeSession()">Cerrar sesión</a></h4>
         </li>
       </ul>
+    </div>
+  </div>
+
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="profileModalLabel">Perfil de Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Nombre de usuario:</strong> <span id="modalUsername"></span></p>
+          <p><strong>Contraseña:</strong> <span id="modalPassword"></span></p>
+          <p><strong>Mejia Bravo Luis Pedro</strong></p>
+          <p><strong>2020266</strong></p>
+          <p><strong>lmejia-2020266@kinal.edu.gt</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -119,5 +140,26 @@
       document.getElementById('contactEmail').textContent = email;
     }
   </script>
-</body>
+
+  <script>
+    function closeSession() {
+        // Eliminar los valores guardados en localStorage
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+    }
+  </script>
+
+  <script>
+    function showUserProfile() {
+      // Obtener los datos almacenados en localStorage
+      const username = localStorage.getItem('username');
+      const password = localStorage.getItem('password');
+      
+      // Mostrar los datos en el modal
+      document.getElementById('modalUsername').textContent = username ? username : 'No disponible';
+      document.getElementById('modalPassword').textContent = password ? password : 'No disponible';
+    }
+  </script>
+
+  </body>
 </html>
